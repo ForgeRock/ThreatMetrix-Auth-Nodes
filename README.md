@@ -1,99 +1,95 @@
-<!--
- * The contents of this file are subject to the terms of the Common Development and
- * Distribution License (the License). You may not use this file except in compliance with the
- * License.
- *
- * You can obtain a copy of the License at legal/CDDLv1.0.txt. See the License for the
- * specific language governing permission and limitations under the License.
- *
- * When distributing Covered Software, include this CDDL Header Notice in each file and include
- * the License file at legal/CDDLv1.0.txt. If applicable, add the following below the CDDL
- * Header, with the fields enclosed by brackets [] replaced by your own identifying
- * information: "Portions copyright [year] [name of copyright owner]".
- *
- * Copyright 2019 ForgeRock AS.
--->
-# ThreatMetrix Authentication Nodes
+[![LNRS](https://risk.lexisnexis.com/Areas/LNRS/img/logo.png)](https://risk.lexisnexis.com/threatmetrix)
+# LexisNexis ThreatMetrix Authentication Nodes
 
-The ThreatMetrix authentication nodes lets administrators integrate ThreatMetrix decision tools into an AM
- authentication trees.
+---
+
+The LexisNexis ThreatMetrix authentication nodes lets administrators integrate Deveice Intelligence
+and Risk Assessment into a ForgeRock Authentication Tree.
+
+> LexisNexis® ThreatMetrix® is a global enterprise solution for digital identity intelligence and 
+> digital authentication that is trusted by leading global brands to inform daily transaction 
+> decisions. By combining digital identity insights built from billions of transactions with 
+> leading analytic technology and embedded machine learning, our fraud prevention solutions 
+> unify decision analytics across the entire customer journey.
 
 ## Usage
+To either upgrade or newly deploy these nodes, perform the following:
+- Download the jar from the releases tab on github [here](https://github.com/ForgeRock/ThreatMetrix-Auth-Nodes/releases/tag/1.1.0). 
+- Copy the jar into the `../web-container/webapps/openam/WEB-INF/lib` directory where AM is 
+deployed
+- Restart the web container to pick up the new nodes
+- Once restart is complete, the nodes will then appear in the authentication trees components palette.
 
-To deploy these nodes, download the jar from the releases tab on github 
-[here](https://github.com/ForgeRock/ThreatMetrix-Auth-Tree-Nodes/releases/latest). Next, copy the jar into the 
-../web-container/webapps/openam/WEB-INF/lib directory where AM is deployed. Restart the web container to pick up the 
-new nodes. The nodes will then appear in the authentication trees components palette.
+## Backwards Compatibility
+Nodes have been tested to be backwards compatible with upgrading from version 1.1.0 to 1.2.0 on ForgeRock AM v7.1.2 and ForgeRock AM v7.2.0
 
-### ThreatMetrix Profiler Node
-This node tags the AM login page with the ThreatMetrix JS to collect information about the event.
+## Quick Start Guide
+In order to get started with the LexisNexis ThreatMetrix Nodes, we have prepared a Quick Start Guide that contains steps to install and configure a standalone ForgeRock AM server with ThreatMetrix Nodes. The Getting Started guide will assist a developer to install the capabilities on a local laptop. Click [Here](./docs/FGRK-Getting-Started-Guide.pdf) to download a copy of the quick start guide.
 
-#### ThreatMetrix Profiler Node Configuration
+# Node Overview
+
+---
+
+LexisNexis ThreatMetrix provides the following ForgeRock Nodes
+- ThreatMetrix Profiler
+- ThreatMetrix Query
+- ThreatMetrix Review Status
+- ThreatMetrix Reason Code
+- ThreatMetrix Update Status
+
+For more information with respect to the parameters in each of the nodes described below, refer to the online Knowledge Base (KB) available via the [ThreatMetrix Portal](https://portal.threatmetrix.com).
+
+## ThreatMetrix Profiler Node
+This node will integrate the ThreatMetrix device intelligence and fingerprinting JavaScript tags.js onto a ForgeRock Page Node. This is typically placed onto a Login Page, Payment Page, or Account Creation page as part of a risk assessment use case.
+
+The ThreatMetrix Profiler node has the following configuration parameters:
 * **Org ID** - Org ID is the unique id associated with ThreatMetrix generated for your organization.
 * **Page ID** - The Page ID is an identifier to be used if you place the ThreatMetrix tag on multiple pages.
-* **Profiler URI** - ThreatMetrix Profiler URI.
+* **Profiler URI** - ThreatMetrix Profiler URI. This can be the Basic Profiling URL or the Enhanced Profiling vis Hosted SSL URL. The default configuration is the Basic Profiling URL.
 * **Use Client Generated Session IDs** - If the ThreatMetrix Javascript is separately integrated into the application
  from the ForgeRock XUI, then enable this property to be able to pass the ThreatMetrix Session ID from the client
   side via the <code>HiddenValueCallback</code>.
-  
-### ThreatMetrix Session Query Node
-This node makes a request the ThreatMetrix Session Query API to retrieve a policy decision about the previously
- generated user session.
- 
-#### ThreatMetrix Session Query Node Configuration
 
- * **API Key** - This is a unique key allocated by ThreatMetrix and associated with an Org Id.
- * **Service Type** - Restricts which output fields are returned based on the level of access that a customer has
-. The service type is linked to an API Key and verified during a call. Generally, the most common service type is 
- session-policy.
- * **Event Type** - Specifies the type of transaction or event.
- * **Policy** - The policy to be used for the query.
- * **Session Query URI** - ThreatMetrix Session Query URI.
- * **Add Shared State Variables To Request** - If you'd like to add additional parameters to the Threat Metrix
- Session Query request, enable this option to iterate over the map of user attributes at key
- tmx_session_query_parameters. Note: A custom scripted or native authentication node must be written to set these
- attributes in shared state.
+## ThreatMetrix Query Node
+This node makes a request LexisNexis ThreatMetrix API Request to either: (i) Session Query API, or (ii) Attribute Query API.  The main difference is that Session Query API requires the TMX Profiler Node to perform device intelligence, whereas the Attribute Query does not involve device intelligence.  Attribute query is helpful in situations where a LexisNexis product such as Emailage or InstantID can be invoked for a risk assessment without any device intelligence.
+
+The ThreatMetrix Query Node has the following configuration parameters:
+* **Org ID** - Org ID is the unique id associated with ThreatMetrix generated for your organization.
+* **API Key** - This is the unique API key generated by ThreatMetrix associated to the Org ID.
+* **Service Type** - Defines the API Response output fields returned from the API Request. The default configuration is session-policy. See the ThreatMetrix Portal KB for a full list of service types.
+* **Event Type** - Specifies the type of transaction or event. The default configuration is login. See the ThreatMetrix Portal KB for a full list of event types.
+* **Policy** - The policy to be used for the query. 
+* **API Error Action** - If an API error is encountered (e.g. network error, timeouts, invalid parameters), then the configured action will be followed as the outcome. This allows the system administrator to define the behavior in the unlikely event this occurs at runtime.
+* **Unknown Session Action** - If an "unknown session" is encountered at runtime, this allows the system administrator to define the behavior in the unlikely event this occurs at runtime. Unknwon sessions occur for a variety of reasons where the device profiling has failed. 
+* **Query Type** - Defines the query type to send to ThreatMetrix. Session Query requires device profile inforamtion and Attribute Query does not require device profile information.
+* **Session Query URI** - ThreatMetrix Session Query URI.This is used when the **Query Type** is set to Session Query, otherwise ignored.
+* **Attribute Query URI** - ThreatMetrix Attribute Query URI. This is used when the **Query Type** is set to Attribute Query, otherwise ignored.
+* **Add Shared State Variables To Request** - If you'd like to add additional parameters to the ThreatMetrix API Request, enable this option. In general it is preferred to add as much data as possible to the API Requests as this will improve the fidelity of the risk assessment.
+* **Session Query Parameters** -  This is a list of ThreatMetrix attribute "key" to ForgeRock "value" attributes. The ForgeRock values are read from the authenticated user identity store.
+
+## ThreatMetrix Review Status Node
+This node analyzes the response from the ThreatMetrix Query Node and routes based on the API Response <code>review_status</code>.  The possible outcomes to route are <code>Pass</code>, <code>Challenge</code>, <code>Review</code> or <code>Reject</code> node outcomes.  Any errors encountered by the ThreatMetrix Query Node will follow either the Unknown Session Action, or the API Error Action configuration for outcome.
  
- ### ThreatMetrix Review Status Node
- This node analyzes the response from the ThreatMetrix Session Query Node and routes to the <code>Pass</code>, 
- <code>Challenge</code>, <code>Review</code> or <code>Reject</code> node outcomes.
+## ThreatMetrix Reason Code Node
+This node analyzes the response from the ThreatMetrix Query Node and routes based on the API Response <code>reason_code</code>. The reason codes are required to be configured so that appropriate outcome routing can occur. The reason codes corresopnd to the ThreatMetrix Portal policy configuration for possible outcomes. Reason codes are generally utilized when the 4 default outcomes for review status are not sufficient for branching in the ForegeRock authentication tree.
  
- ### ThreatMetrix Policy Score Node
- This node analyzes the response from the ThreatMetrix Session Query Node and checks to see if the risk score is
- above the configured value.
-  
- #### ThreatMetrix Policy Score Node Configuration
+The outcomes configured for API Error Action and Unknown Session Action do need to be configured in the list of outcomes, otherwise the default <code>Failure</code> outcome will be utilized.
+
+The ThreatMetrix Reason Code Node has the following configuration parameters:
+* **Reason Code Outcomes** - A list of Reason Codes that to check from a Query API Response. When a Reason Code is added to this list, a new outcome will presented on the node. The node will iterate through the configured Reason Code list until a Reason code match is found and will return that outcome. Otherwise, the <code>None Triggered</code> outcome will be returned. Reason Code outcomes are case sensitive and must match the ThreatMetrix Portal policy.
  
-  * **Policy Score Threshold** - The policy score threshold of the policy which is calculated based on the sum of the
- risk weights for each of the rules configured within it.
+## ThreatMetrix Update Review Node
+The ThreatMetrix Update Node provides retrospective trusth data to ThreatMetrix for an event. The typical ForgeRock Authentication Tree will perform a ThreatMetrix Query and if step-up authentication is involved, the ThreatMetrix Update Node is integrated to provide additional details on the event. Truth data is incredibly beneficial for tuning of the policy and overall fraud detection.
+
+The ThreatMetrix Reason Code Node has the following configuration parameters:
+* **Org ID** - Org ID is the unique id associated with ThreatMetrix generated for your organization.
+* **API Key** - This is the unique API key generated by ThreatMetrix associated to the Org ID.
+* **Update URI** - ThreatMetrix Update URI.
+* **API Error Action** - If an API error is encountered (e.g. network error, timeouts, invalid parameters), then the configured action will be followed as the outcome. This allows the system administrator to define the behavior in the unlikely event this occurs at runtime.
+* **Event Tag** - This represents the event disposition and outcome of the ThreatMetrix Query. Generally, the <code>challenge_init</code> is configured prior to sending a Step-Up authentication request in the event the transaction is abandoned. Following a step-up authentication, either <code>challenge_pass</code> or <code>challenge_fail</code> is sent to the ThreatMetrix platform.
+* **Step-Up Method** - This is the authentication challenge method used within the ForgeRock authentication tree to report retrospective truth data for the overall transaction. 
+* **Notes** - An optional notes parameter that allows you to append any notes such as why the review status is being updated.
+
+# Example Authentication Tree Flow
  
- ### ThreatMetrix Reason Code Node
- This node analyzes the response from the ThreatMetrix Session Query Node and checks to see if an individual reason
-  code has been returned. These reason codes correspond to ThreatMetrix Rule Names within a ThreatMetrix Policy.
- 
- #### ThreatMetrix Reason Code Node Configuration
- * **Reason Code Outcomes** - A list of Reason Codes that you would like to check for from a ThreatMetrix policy
-  evaluation. When a Reason Code is added to this list, a new outcome will presented on the node. The node will
-   iterate through the configured Reason Code until a Reason code is found and will return that outcome. Otherwise
-    the <code>None Triggered</code> outcome will be returned.
- 
-  ### ThreatMetrix Update Review Node
-  This node calls the ThreatMetrix Update API to update the session with the Final Review Status for the users session.
-   
-  #### ThreatMetrix Update Review Node Configuration
-  
-   * **API Key** - This is a unique key allocated by ThreatMetrix and associated with an Org Id.
-   * **Final Review Status** - Indicates the value of the new status that the transaction should be updated to. If
-    `None` is selected, then a final review status will not be passed in the request.
-   * **Notes** - An optional notes parameter that allows you to append any notes such as why the review status is
-   being updated.
-   * **Trust Tag Name** - The Trust Tag Name from one of ThreatMetrix's predefined set of Global Trust Tags.
-   * **Trust Tag Context** - The Trust Tag Context from one of ThreatMetrix's Predefined set of Contexts. This is 
-    mandatory if the tag name is passed.
-   * **Line of Business** - The Line of Business as specified by the customer.
-   * **Update URI** - ThreatMetrix Update URI.
- 
- ### Example Flow
- 
- 
- ![SAML_TREE](./images/threatmetrix_flow.png)
+![SAML_TREE](./images/threatmetrix_flow.png)
