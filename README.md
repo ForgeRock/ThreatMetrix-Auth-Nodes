@@ -4,13 +4,13 @@
 ---
 
 The LexisNexis ThreatMetrix authentication nodes lets administrators integrate Deveice Intelligence
-and Risk Assessment into a ForgeRock Authentication Tree.
+and Risk Assessment into a ForgeRock Authentication Tree. From the LexisNexis ThreatMetrix Portal, the
+configured policy for risk assessment will orchestrate LexisNexis products such as ThreatMetrix, Emailage, 
+PhoneFinder, InstantID and FlexID.  When a transaction occurs, such as a login event, the LexisNexis 
+ThreatMetrix nodes will be integated for risk assessment resulting in a risk score that is interpretted
+to define outcomes such as step-up authentication, passing without further friction, or rejecting 
+resulting in blocking the transaction.
 
-> LexisNexis® ThreatMetrix® is a global enterprise solution for digital identity intelligence and 
-> digital authentication that is trusted by leading global brands to inform daily transaction 
-> decisions. By combining digital identity insights built from billions of transactions with 
-> leading analytic technology and embedded machine learning, our fraud prevention solutions 
-> unify decision analytics across the entire customer journey.
 
 ## Usage
 To either upgrade or newly deploy these nodes, perform the following:
