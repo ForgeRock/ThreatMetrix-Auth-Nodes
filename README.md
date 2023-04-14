@@ -24,7 +24,7 @@ deployed
 Nodes have been tested to be backwards compatible with upgrading from version 1.1.0 to 1.2.0 on ForgeRock AM v7.1.2 and ForgeRock AM v7.2.0
 
 ## Quick Start Guide
-In order to get started with the LexisNexis ThreatMetrix Nodes, we have prepared a Quick Start Guide that contains steps to install and configure a standalone ForgeRock AM server with ThreatMetrix Nodes. The Getting Started guide will assist a developer to install the capabilities on a local laptop. Click [here](./docs/FGRK-LNRS-TMX-AuthNodes-Getting-Started-Guide.pdf) to download a copy of the quick start guide.
+In order to get started with the LexisNexis ThreatMetrix Nodes, we have prepared a Quick Start Guide that contains steps to install and configure a ForgeRock AM server with LexisNexis ThreatMetrix Nodes. The Getting Started guide also contains instructions to configure a ThreatMetrix Authentication Tree. Click [here](./docs/FGRK-LNRS-TMX-AuthNodes-Getting-Started-Guide.pdf) to download a copy of the quick start guide.
 
 ## Release Notes
 To get the latest version of the LexisNexis ThreatMetrix Nodes release notes, click [here](./docs/FGRK-LNRS-TMX-AuthNodes-Release-Notes.pdf) 
