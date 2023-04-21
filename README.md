@@ -21,7 +21,12 @@ deployed
 - Once restart is complete, the nodes will then appear in the authentication trees components palette.
 
 ## Backwards Compatibility
-Nodes have been tested to be backwards compatible with upgrading from version 1.1.0 to 1.2.0 on ForgeRock AM v7.1.2 and ForgeRock AM v7.2.0
+The LexisNexis ThreatMetrix Nodes have been tested to be compatible with ForgeRock AM v7.3.0, as well as 
+available on the ForgeRock Identity Cloud.  
+
+Due to changes in the APIs, the LexisNexis ThreatMetrix Nodes v1.2.0 are not compatible with versions 
+prior to ForgeRock v7.3.0. If support is needed for these versions, contact LexisNexis.
+
 
 ## Quick Start Guide
 In order to get started with the LexisNexis ThreatMetrix Nodes, we have prepared a Quick Start Guide that contains steps to install and configure a ForgeRock AM server with LexisNexis ThreatMetrix Nodes. The Getting Started guide also contains instructions to configure a ThreatMetrix Authentication Tree. Click [here](./docs/FGRK-LNRS-TMX-AuthNodes-Getting-Started-Guide.pdf) to download a copy of the quick start guide.
@@ -62,7 +67,6 @@ The ThreatMetrix Query Node has the following configuration parameters:
 * **Service Type** - Defines the API Response output fields returned from the API Request. The default configuration is session-policy. See the ThreatMetrix Portal KB for a full list of service types.
 * **Event Type** - Specifies the type of transaction or event. The default configuration is login. See the ThreatMetrix Portal KB for a full list of event types.
 * **Policy** - The policy to be used for the query. 
-* **API Error Action** - If an API error is encountered (e.g. network error, timeouts, invalid parameters), then the configured action will be followed as the outcome. This allows the system administrator to define the behavior in the unlikely event this occurs at runtime.
 * **Unknown Session Action** - If an "unknown session" is encountered at runtime, this allows the system administrator to define the behavior in the unlikely event this occurs at runtime. Unknwon sessions occur for a variety of reasons where the device profiling has failed. 
 * **Query Type** - Defines the query type to send to ThreatMetrix. Session Query requires device profile inforamtion and Attribute Query does not require device profile information.
 * **Session Query URI** - ThreatMetrix Session Query URI.This is used when the **Query Type** is set to Session Query, otherwise ignored.
@@ -71,12 +75,13 @@ The ThreatMetrix Query Node has the following configuration parameters:
 * **Session Query Parameters** -  This is a list of ThreatMetrix attribute "key" to ForgeRock "value" attributes. The ForgeRock values are read from the authenticated user identity store.
 
 ## ThreatMetrix Review Status Node
-This node analyzes the response from the ThreatMetrix Query Node and routes based on the API Response <code>review_status</code>.  The possible outcomes to route are <code>Pass</code>, <code>Challenge</code>, <code>Review</code> or <code>Reject</code> node outcomes.  Any errors encountered by the ThreatMetrix Query Node will follow either the Unknown Session Action, or the API Error Action configuration for outcome.
+This node analyzes the response from the ThreatMetrix Query Node and routes based on the API Response <code>review_status</code>.  The possible outcomes to route are <code>Pass</code>, <code>Challenge</code>, <code>Review</code> or <code>Reject</code> node outcomes. If an unknown session occurred as a result of profiling and the ThreatMetrix query reported unknown session condition, the ThreatMetrix Review Status Node will follow the configured Unknown Session Action.
  
 ## ThreatMetrix Reason Code Node
 This node analyzes the response from the ThreatMetrix Query Node and routes based on the API Response <code>reason_code</code>. The reason codes are required to be configured so that appropriate outcome routing can occur. The reason codes corresopnd to the ThreatMetrix Portal policy configuration for possible outcomes. Reason codes are generally utilized when the 4 default outcomes for review status are not sufficient for branching in the ForegeRock authentication tree.
  
-The outcomes configured for API Error Action and Unknown Session Action do need to be configured in the list of outcomes, otherwise the default <code>Failure</code> outcome will be utilized.
+The outcome for Unknown Session Action does need to be configured in the list of outcomes, otherwise the default
+<code>Error</code> outcome will be utilized.
 
 The ThreatMetrix Reason Code Node has the following configuration parameters:
 * **Reason Code Outcomes** - A list of Reason Codes that to check from a Query API Response. When a Reason Code is added to this list, a new outcome will presented on the node. The node will iterate through the configured Reason Code list until a Reason code match is found and will return that outcome. Otherwise, the <code>None Triggered</code> outcome will be returned. Reason Code outcomes are case sensitive and must match the ThreatMetrix Portal policy.
@@ -88,7 +93,6 @@ The ThreatMetrix Reason Code Node has the following configuration parameters:
 * **Org ID** - Org ID is the unique id associated with ThreatMetrix generated for your organization.
 * **API Key** - This is the unique API key generated by ThreatMetrix associated to the Org ID.
 * **Update URI** - ThreatMetrix Update URI.
-* **API Error Action** - If an API error is encountered (e.g. network error, timeouts, invalid parameters), then the configured action will be followed as the outcome. This allows the system administrator to define the behavior in the unlikely event this occurs at runtime.
 * **Event Tag** - This represents the event disposition and outcome of the ThreatMetrix Query. Generally, the <code>challenge_init</code> is configured prior to sending a Step-Up authentication request in the event the transaction is abandoned. Following a step-up authentication, either <code>challenge_pass</code> or <code>challenge_fail</code> is sent to the ThreatMetrix platform.
 * **Step-Up Method** - This is the authentication challenge method used within the ForgeRock authentication tree to report retrospective truth data for the overall transaction. 
 * **Notes** - An optional notes parameter that allows you to append any notes such as why the review status is being updated.
