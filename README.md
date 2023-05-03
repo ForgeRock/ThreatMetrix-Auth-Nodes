@@ -1,22 +1,20 @@
 [![LNRS](https://risk.lexisnexis.com/Areas/LNRS/img/logo.png)](https://risk.lexisnexis.com/threatmetrix)
 # LexisNexis ThreatMetrix Authentication Nodes
-
----
-
-The LexisNexis ThreatMetrix authentication nodes lets administrators integrate Deveice Intelligence
-and Risk Assessment into a ForgeRock Authentication Tree. From the LexisNexis ThreatMetrix Portal, the
-configured policy for risk assessment will orchestrate LexisNexis products such as ThreatMetrix, Emailage, 
-PhoneFinder, InstantID and FlexID.  When a transaction occurs, such as a login event, the LexisNexis 
-ThreatMetrix nodes will be integated for risk assessment resulting in a risk score that is interpretted
-to define outcomes such as step-up authentication, passing without further friction, or rejecting 
-resulting in blocking the transaction.
+The LexisNexis ThreatMetrix Authentication Nodes provides the capability for administrators to integrate 
+Device Intelligence and Risk Assessment into a ForgeRock Authentication Tree. From the LexisNexis 
+ThreatMetrix Portal, the configured policy for risk assessment will orchestrate LexisNexis products 
+such as ThreatMetrix, Emailage, PhoneFinder, InstantID and FlexID.  When a transaction occurs, such as 
+a login event, the LexisNexis ThreatMetrix nodes will be integrated for risk assessment resulting in a 
+risk score mapped to defined outcomes such as step-up authentication, passing without further friction, 
+or rejecting resulting in blocking the transaction.
 
 
-## Usage
-To either upgrade or newly deploy these nodes, perform the following:
-- Download the jar from the releases tab on github [here](https://github.com/ForgeRock/ThreatMetrix-Auth-Nodes/releases/tag/1.1.0). 
-- Copy the jar into the `../web-container/webapps/openam/WEB-INF/lib` directory where AM is 
-deployed
+## Installation
+LexisNexis ThreatMetrix Authentication Nodes are packaged as a jar file using the maven build toolset. To 
+deploy the jar file for the nodes, perform the following:
+- Download the jar from the releases tab on github [here](https://github.com/ForgeRock/ThreatMetrix-Auth-Nodes/releases/latest). 
+- Stop the web container to deploy the jar file
+- Copy the jar into the `../web-container/webapps/openam/WEB-INF/lib` directory where AM is deployed
 - Restart the web container to pick up the new nodes
 - Once restart is complete, the nodes will then appear in the authentication trees components palette.
 
@@ -36,8 +34,6 @@ To get the latest version of the LexisNexis ThreatMetrix Nodes release notes, cl
 
 # Node Overview
 
----
-
 LexisNexis ThreatMetrix provides the following ForgeRock Nodes
 - ThreatMetrix Profiler
 - ThreatMetrix Query
@@ -45,18 +41,17 @@ LexisNexis ThreatMetrix provides the following ForgeRock Nodes
 - ThreatMetrix Reason Code
 - ThreatMetrix Update Status
 
-For more information with respect to the parameters in each of the nodes described below, refer to the online Knowledge Base (KB) available via the [ThreatMetrix Portal](https://portal.threatmetrix.com).
 
 ## ThreatMetrix Profiler Node
-This node will integrate the ThreatMetrix device intelligence and fingerprinting JavaScript tags.js onto a ForgeRock Page Node. This is typically placed onto a Login Page, Payment Page, or Account Creation page as part of a risk assessment use case.
+This node will integrate the ThreatMetrix device intelligence and fingerprinting JavaScript Tags onto a ForgeRock Page Node. This is typically placed onto a Login Page, Payment Page, or Account Creation page as part of a risk assessment use case.
 
 The ThreatMetrix Profiler node has the following configuration parameters:
 * **Org ID** - Org ID is the unique id associated with ThreatMetrix generated for your organization.
 * **Page ID** - The Page ID is an identifier to be used if you place the ThreatMetrix tag on multiple pages.
 * **Profiler URI** - ThreatMetrix Profiler URI. This can be the Basic Profiling URL or the Enhanced Profiling vis Hosted SSL URL. The default configuration is the Basic Profiling URL.
-* **Use Client Generated Session IDs** - If the ThreatMetrix Javascript is separately integrated into the application
- from the ForgeRock XUI, then enable this property to be able to pass the ThreatMetrix Session ID from the client
-  side via the <code>HiddenValueCallback</code>.
+* **Use Client Generated Session IDs** - If ThreatMetrix JavaScript Tags have been separately integrated onto an application webpage 
+external to the ForgeRock platform, activate this property toggle. When activated, this node will fetch the SessionID from the 
+application via a ForgeRock Read-Only callback, mainly a <code>HiddenValueCallback</code>.
 
 ## ThreatMetrix Query Node
 This node makes a request LexisNexis ThreatMetrix API Request to either: (i) Session Query API, or (ii) Attribute Query API.  The main difference is that Session Query API requires the TMX Profiler Node to perform device intelligence, whereas the Attribute Query does not involve device intelligence.  Attribute query is helpful in situations where a LexisNexis product such as Emailage or InstantID can be invoked for a risk assessment without any device intelligence.
@@ -97,6 +92,9 @@ The ThreatMetrix Reason Code Node has the following configuration parameters:
 * **Step-Up Method** - This is the authentication challenge method used within the ForgeRock authentication tree to report retrospective truth data for the overall transaction. 
 * **Notes** - An optional notes parameter that allows you to append any notes such as why the review status is being updated.
 
-# Example Authentication Tree Flow
+# Configuring LexisNexis ThreatMetrix Auth Tree
+
+## Example Tree
+The example depicted here is showing how to integrate LexisNexis ThreatMetrix into a Login journey. The journey starts with a Page node to capture username/password at the same time the ThreatMetrix Profiler node injects JavaScript Tags into the page to capture device intelligence information, where the device information is associated to a unique Session ID. The Session ID along with user PII make up an API call via the ThreatMetrix Session Query Node to the LexisNexis Dynamic Decision Platform (DDP) for risk assessment. Risk assessment is performed via a DDP policy to run the rules associated to the login event and associated PII data to capture suspicious activity. The result of the risk assessment is captured as a API response in the ThreatMetrix Session Query node. This particular example shows the ThreatMetrix Review Status node being used to interpret the API risk assessment response, where this node interprets the <code>review_status</code>. The possible outcomes to continue the journey are <code>Pass</code>, <code>Challenge</code>, <code>Review</code> or <code>Reject</code>.  The outcomes <code>Challenge</code> and <code>Review</code> start a step-up second factor of authentication, which can be any set of nodes to perform this capability, such as OTP/SMS or Mobile push notification. Regardless of the step-up authentication, the ThreatMetrix Update Review node adds truth data to the login event which enriches the information in the network and enhance fraud detection. The example here shows initialization of step-up MFA along with outcome of either pass or fail. The initialization is important as step-up authentication that is initialized but never completes is a sign of potential fraud with a login event.
  
 ![SAML_TREE](./images/threatmetrix_flow.png)
