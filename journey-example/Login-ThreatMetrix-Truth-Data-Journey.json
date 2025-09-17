@@ -1,0 +1,233 @@
+{
+  "meta": {
+    "origin": "https://openam-tntp-lnupg-test.forgeblocks.com/platform/?realm=alpha#/journeys/Login-ThreatMetrix-Truth-Data",
+    "exportedBy": "Eric.Uythoven@lexisnexisrisk.com",
+    "exportDate": "2025-09-09T21:29:46.757Z",
+    "exportTool": "platform-admin ui tree export",
+    "exportToolVersion": "1.0",
+    "treesSelectedForExport": [
+      "Login-ThreatMetrix-Truth-Data"
+    ],
+    "innerTreesIncluded": []
+  },
+  "trees": {
+    "Login-ThreatMetrix-Truth-Data": {
+      "tree": {
+        "_id": "Login-ThreatMetrix-Truth-Data",
+        "_rev": "2021247706",
+        "identityResource": "managed/alpha_user",
+        "entryNodeId": "775bb1b2-fba9-49e2-92a2-feb80f54e4ab",
+        "innerTreeOnly": false,
+        "description": "Add ThreatMetrix truth data to transaction as part of a Step-Up MFA operation. This requires ThreatMetrix Query to be performed prior to calling the Update Review Status node.",
+        "noSession": false,
+        "mustRun": false,
+        "enabled": true,
+        "uiConfig": {
+          "categories": "[\"Authentication\"]"
+        },
+        "nodes": {
+          "775bb1b2-fba9-49e2-92a2-feb80f54e4ab": {
+            "x": 154,
+            "y": 225.76666259765625,
+            "connections": {
+              "ERROR": "a9b3d5c7-16b9-4c86-b0d4-5a3e6deb8a90",
+              "NEXT": "b3e684b9-1887-4776-b59c-9f09219ef8ab"
+            },
+            "nodeType": "ThreatMetrixUpdateReviewNode",
+            "displayName": "Update Review INIT"
+          },
+          "d800438d-0245-4218-bcec-4d4b6c4d91a8": {
+            "x": 779,
+            "y": 244.76666259765625,
+            "connections": {
+              "ERROR": "a9b3d5c7-16b9-4c86-b0d4-5a3e6deb8a90",
+              "NEXT": "e301438c-0bd0-429c-ab0c-66126501069a"
+            },
+            "nodeType": "ThreatMetrixUpdateReviewNode",
+            "displayName": "Update Review FAIL"
+          },
+          "a9b3d5c7-16b9-4c86-b0d4-5a3e6deb8a90": {
+            "x": 1042,
+            "y": 428.76666259765625,
+            "connections": {
+              "false": "e301438c-0bd0-429c-ab0c-66126501069a",
+              "true": "e301438c-0bd0-429c-ab0c-66126501069a"
+            },
+            "nodeType": "MessageNode",
+            "displayName": "INTEGRATION ERROR"
+          },
+          "4136d4ca-87c5-49f9-ad82-bd37a7ef67fa": {
+            "x": 780,
+            "y": 85.76666259765625,
+            "connections": {
+              "ERROR": "a9b3d5c7-16b9-4c86-b0d4-5a3e6deb8a90",
+              "NEXT": "70e691a5-1e33-4ac3-a356-e7b6d60d92e0"
+            },
+            "nodeType": "ThreatMetrixUpdateReviewNode",
+            "displayName": "Update Review PASS"
+          },
+          "b3e684b9-1887-4776-b59c-9f09219ef8ab": {
+            "x": 463,
+            "y": 159.76666259765625,
+            "connections": {
+              "false": "d800438d-0245-4218-bcec-4d4b6c4d91a8",
+              "true": "4136d4ca-87c5-49f9-ad82-bd37a7ef67fa"
+            },
+            "nodeType": "MessageNode",
+            "displayName": "OTP – Step Up Authentication"
+          }
+        },
+        "staticNodes": {
+          "startNode": {
+            "x": 50,
+            "y": 250
+          },
+          "70e691a5-1e33-4ac3-a356-e7b6d60d92e0": {
+            "x": 1225,
+            "y": 129
+          },
+          "e301438c-0bd0-429c-ab0c-66126501069a": {
+            "x": 1236,
+            "y": 274
+          }
+        }
+      },
+      "nodes": {
+        "775bb1b2-fba9-49e2-92a2-feb80f54e4ab": {
+          "_id": "775bb1b2-fba9-49e2-92a2-feb80f54e4ab",
+          "_rev": "-1584997987",
+          "orgId": "xxxxxxxx",
+          "stepUpMethodName": "_A_SMS",
+          "eventTagName": "challenge_init",
+          "baseUrl": "https://h-api.online-metrix.net/",
+          "_type": {
+            "_id": "ThreatMetrixUpdateReviewNode",
+            "name": "ThreatMetrix Update Review",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "NEXT",
+              "displayName": "Next"
+            },
+            {
+              "id": "ERROR",
+              "displayName": "Error"
+            }
+          ]
+        },
+        "d800438d-0245-4218-bcec-4d4b6c4d91a8": {
+          "_id": "d800438d-0245-4218-bcec-4d4b6c4d91a8",
+          "_rev": "333241438",
+          "orgId": "xxxxxxxx",
+          "stepUpMethodName": "_A_SMS",
+          "eventTagName": "challenge_fail",
+          "notes": "",
+          "baseUrl": "https://h-api.online-metrix.net/",
+          "_type": {
+            "_id": "ThreatMetrixUpdateReviewNode",
+            "name": "ThreatMetrix Update Review",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "NEXT",
+              "displayName": "Next"
+            },
+            {
+              "id": "ERROR",
+              "displayName": "Error"
+            }
+          ]
+        },
+        "a9b3d5c7-16b9-4c86-b0d4-5a3e6deb8a90": {
+          "_id": "a9b3d5c7-16b9-4c86-b0d4-5a3e6deb8a90",
+          "_rev": "1047088801",
+          "messageYes": {
+            "en": "OK"
+          },
+          "message": {
+            "en": "An integration error has occurred in the Journey"
+          },
+          "messageNo": {
+            "en": "OK"
+          },
+          "_type": {
+            "_id": "MessageNode",
+            "name": "Message Node",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "true",
+              "displayName": "True"
+            },
+            {
+              "id": "false",
+              "displayName": "False"
+            }
+          ]
+        },
+        "4136d4ca-87c5-49f9-ad82-bd37a7ef67fa": {
+          "_id": "4136d4ca-87c5-49f9-ad82-bd37a7ef67fa",
+          "_rev": "1403169352",
+          "orgId": "xxxxxxxx",
+          "stepUpMethodName": "_A_SMS",
+          "eventTagName": "challenge_pass",
+          "notes": "",
+          "baseUrl": "https://h-api.online-metrix.net/",
+          "_type": {
+            "_id": "ThreatMetrixUpdateReviewNode",
+            "name": "ThreatMetrix Update Review",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "NEXT",
+              "displayName": "Next"
+            },
+            {
+              "id": "ERROR",
+              "displayName": "Error"
+            }
+          ]
+        },
+        "b3e684b9-1887-4776-b59c-9f09219ef8ab": {
+          "_id": "b3e684b9-1887-4776-b59c-9f09219ef8ab",
+          "_rev": "1902844885",
+          "messageYes": {
+            "en": "Step Up PASS"
+          },
+          "message": {
+            "en": "OTP – Step Up Authentication"
+          },
+          "messageNo": {
+            "en": "Step Up FAIL"
+          },
+          "_type": {
+            "_id": "MessageNode",
+            "name": "Message Node",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "true",
+              "displayName": "True"
+            },
+            {
+              "id": "false",
+              "displayName": "False"
+            }
+          ]
+        }
+      },
+      "innerNodes": {},
+      "scripts": {},
+      "emailTemplates": {},
+      "socialIdentityProviders": {},
+      "themes": [],
+      "saml2Entities": {},
+      "circlesOfTrust": {}
+    }
+  }
+}
