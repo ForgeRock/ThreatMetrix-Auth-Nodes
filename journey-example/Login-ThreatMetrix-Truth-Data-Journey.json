@@ -1,8 +1,8 @@
 {
   "meta": {
-    "origin": "https://openam-tntp-lnupg-test.forgeblocks.com/platform/?realm=alpha#/journeys/Login-ThreatMetrix-Truth-Data",
-    "exportedBy": "Eric.Uythoven@lexisnexisrisk.com",
-    "exportDate": "2025-09-09T21:29:46.757Z",
+    "origin": "https://openam-tntp-lnupg1.forgeblocks.com/platform/?realm=alpha#/journeys",
+    "exportedBy": "admin@lexisnexisrisk.com",
+    "exportDate": "2026-02-12T23:27:30.604Z",
     "exportTool": "platform-admin ui tree export",
     "exportToolVersion": "1.0",
     "treesSelectedForExport": [
@@ -14,7 +14,7 @@
     "Login-ThreatMetrix-Truth-Data": {
       "tree": {
         "_id": "Login-ThreatMetrix-Truth-Data",
-        "_rev": "2021247706",
+        "_rev": "670084069",
         "identityResource": "managed/alpha_user",
         "entryNodeId": "775bb1b2-fba9-49e2-92a2-feb80f54e4ab",
         "innerTreeOnly": false,
@@ -22,29 +22,30 @@
         "noSession": false,
         "mustRun": false,
         "enabled": true,
+        "transactionalOnly": false,
         "uiConfig": {
           "categories": "[\"Authentication\"]"
         },
         "nodes": {
+          "4136d4ca-87c5-49f9-ad82-bd37a7ef67fa": {
+            "x": 769,
+            "y": 108.76666259765625,
+            "connections": {
+              "ERROR": "a9b3d5c7-16b9-4c86-b0d4-5a3e6deb8a90",
+              "NEXT": "70e691a5-1e33-4ac3-a356-e7b6d60d92e0"
+            },
+            "nodeType": "ThreatMetrixUpdateReviewNode",
+            "displayName": "Update Review PASS"
+          },
           "775bb1b2-fba9-49e2-92a2-feb80f54e4ab": {
-            "x": 154,
-            "y": 225.76666259765625,
+            "x": 157,
+            "y": 221.76666259765625,
             "connections": {
               "ERROR": "a9b3d5c7-16b9-4c86-b0d4-5a3e6deb8a90",
               "NEXT": "b3e684b9-1887-4776-b59c-9f09219ef8ab"
             },
             "nodeType": "ThreatMetrixUpdateReviewNode",
             "displayName": "Update Review INIT"
-          },
-          "d800438d-0245-4218-bcec-4d4b6c4d91a8": {
-            "x": 779,
-            "y": 244.76666259765625,
-            "connections": {
-              "ERROR": "a9b3d5c7-16b9-4c86-b0d4-5a3e6deb8a90",
-              "NEXT": "e301438c-0bd0-429c-ab0c-66126501069a"
-            },
-            "nodeType": "ThreatMetrixUpdateReviewNode",
-            "displayName": "Update Review FAIL"
           },
           "a9b3d5c7-16b9-4c86-b0d4-5a3e6deb8a90": {
             "x": 1042,
@@ -56,25 +57,25 @@
             "nodeType": "MessageNode",
             "displayName": "INTEGRATION ERROR"
           },
-          "4136d4ca-87c5-49f9-ad82-bd37a7ef67fa": {
-            "x": 780,
-            "y": 85.76666259765625,
-            "connections": {
-              "ERROR": "a9b3d5c7-16b9-4c86-b0d4-5a3e6deb8a90",
-              "NEXT": "70e691a5-1e33-4ac3-a356-e7b6d60d92e0"
-            },
-            "nodeType": "ThreatMetrixUpdateReviewNode",
-            "displayName": "Update Review PASS"
-          },
           "b3e684b9-1887-4776-b59c-9f09219ef8ab": {
-            "x": 463,
-            "y": 159.76666259765625,
+            "x": 457,
+            "y": 166.76666259765625,
             "connections": {
               "false": "d800438d-0245-4218-bcec-4d4b6c4d91a8",
               "true": "4136d4ca-87c5-49f9-ad82-bd37a7ef67fa"
             },
             "nodeType": "MessageNode",
             "displayName": "OTP – Step Up Authentication"
+          },
+          "d800438d-0245-4218-bcec-4d4b6c4d91a8": {
+            "x": 767,
+            "y": 252.76666259765625,
+            "connections": {
+              "ERROR": "a9b3d5c7-16b9-4c86-b0d4-5a3e6deb8a90",
+              "NEXT": "e301438c-0bd0-429c-ab0c-66126501069a"
+            },
+            "nodeType": "ThreatMetrixUpdateReviewNode",
+            "displayName": "Update Review FAIL"
           }
         },
         "staticNodes": {
@@ -83,27 +84,29 @@
             "y": 250
           },
           "70e691a5-1e33-4ac3-a356-e7b6d60d92e0": {
-            "x": 1225,
-            "y": 129
+            "x": 1322,
+            "y": 150
           },
           "e301438c-0bd0-429c-ab0c-66126501069a": {
-            "x": 1236,
-            "y": 274
+            "x": 1322,
+            "y": 287
           }
         }
       },
       "nodes": {
-        "775bb1b2-fba9-49e2-92a2-feb80f54e4ab": {
-          "_id": "775bb1b2-fba9-49e2-92a2-feb80f54e4ab",
-          "_rev": "-1584997987",
-          "orgId": "xxxxxxxx",
+        "4136d4ca-87c5-49f9-ad82-bd37a7ef67fa": {
+          "_id": "4136d4ca-87c5-49f9-ad82-bd37a7ef67fa",
+          "_rev": "339262153",
+          "orgId": "abcd1234",
           "stepUpMethodName": "_A_SMS",
-          "eventTagName": "challenge_init",
+          "eventTagName": "challenge_pass",
+          "apiKey": null,
           "baseUrl": "https://h-api.online-metrix.net/",
           "_type": {
             "_id": "ThreatMetrixUpdateReviewNode",
             "name": "ThreatMetrix Update Review",
-            "collection": true
+            "collection": true,
+            "version": "1.0"
           },
           "_outcomes": [
             {
@@ -116,18 +119,19 @@
             }
           ]
         },
-        "d800438d-0245-4218-bcec-4d4b6c4d91a8": {
-          "_id": "d800438d-0245-4218-bcec-4d4b6c4d91a8",
-          "_rev": "333241438",
-          "orgId": "xxxxxxxx",
+        "775bb1b2-fba9-49e2-92a2-feb80f54e4ab": {
+          "_id": "775bb1b2-fba9-49e2-92a2-feb80f54e4ab",
+          "_rev": "1751070943",
+          "orgId": "abcd1234",
           "stepUpMethodName": "_A_SMS",
-          "eventTagName": "challenge_fail",
-          "notes": "",
+          "eventTagName": "challenge_init",
+          "apiKey": null,
           "baseUrl": "https://h-api.online-metrix.net/",
           "_type": {
             "_id": "ThreatMetrixUpdateReviewNode",
             "name": "ThreatMetrix Update Review",
-            "collection": true
+            "collection": true,
+            "version": "1.0"
           },
           "_outcomes": [
             {
@@ -142,7 +146,7 @@
         },
         "a9b3d5c7-16b9-4c86-b0d4-5a3e6deb8a90": {
           "_id": "a9b3d5c7-16b9-4c86-b0d4-5a3e6deb8a90",
-          "_rev": "1047088801",
+          "_rev": "1499230190",
           "messageYes": {
             "en": "OK"
           },
@@ -155,7 +159,8 @@
           "_type": {
             "_id": "MessageNode",
             "name": "Message Node",
-            "collection": true
+            "collection": true,
+            "version": "1.0"
           },
           "_outcomes": [
             {
@@ -168,33 +173,9 @@
             }
           ]
         },
-        "4136d4ca-87c5-49f9-ad82-bd37a7ef67fa": {
-          "_id": "4136d4ca-87c5-49f9-ad82-bd37a7ef67fa",
-          "_rev": "1403169352",
-          "orgId": "xxxxxxxx",
-          "stepUpMethodName": "_A_SMS",
-          "eventTagName": "challenge_pass",
-          "notes": "",
-          "baseUrl": "https://h-api.online-metrix.net/",
-          "_type": {
-            "_id": "ThreatMetrixUpdateReviewNode",
-            "name": "ThreatMetrix Update Review",
-            "collection": true
-          },
-          "_outcomes": [
-            {
-              "id": "NEXT",
-              "displayName": "Next"
-            },
-            {
-              "id": "ERROR",
-              "displayName": "Error"
-            }
-          ]
-        },
         "b3e684b9-1887-4776-b59c-9f09219ef8ab": {
           "_id": "b3e684b9-1887-4776-b59c-9f09219ef8ab",
-          "_rev": "1902844885",
+          "_rev": "-1939981022",
           "messageYes": {
             "en": "Step Up PASS"
           },
@@ -207,7 +188,8 @@
           "_type": {
             "_id": "MessageNode",
             "name": "Message Node",
-            "collection": true
+            "collection": true,
+            "version": "1.0"
           },
           "_outcomes": [
             {
@@ -217,6 +199,31 @@
             {
               "id": "false",
               "displayName": "False"
+            }
+          ]
+        },
+        "d800438d-0245-4218-bcec-4d4b6c4d91a8": {
+          "_id": "d800438d-0245-4218-bcec-4d4b6c4d91a8",
+          "_rev": "-730665761",
+          "orgId": "abcd1234",
+          "stepUpMethodName": "_A_SMS",
+          "eventTagName": "challenge_fail",
+          "apiKey": null,
+          "baseUrl": "https://h-api.online-metrix.net/",
+          "_type": {
+            "_id": "ThreatMetrixUpdateReviewNode",
+            "name": "ThreatMetrix Update Review",
+            "collection": true,
+            "version": "1.0"
+          },
+          "_outcomes": [
+            {
+              "id": "NEXT",
+              "displayName": "Next"
+            },
+            {
+              "id": "ERROR",
+              "displayName": "Error"
             }
           ]
         }
