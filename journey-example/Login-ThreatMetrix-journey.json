@@ -1,8 +1,8 @@
 {
   "meta": {
-    "origin": "https://openam-tntp-lnupg-test.forgeblocks.com/platform/?realm=alpha#/journeys/Login-ThreatMetrix",
-    "exportedBy": "Admin@lexisnexisrisk.com",
-    "exportDate": "2025-09-09T21:30:40.221Z",
+    "origin": "https://openam-tntp-lnupg1.forgeblocks.com/platform/?realm=alpha#/journeys",
+    "exportedBy": "admin@lexisnexisrisk.com",
+    "exportDate": "2026-02-12T23:27:19.571Z",
     "exportTool": "platform-admin ui tree export",
     "exportToolVersion": "1.0",
     "treesSelectedForExport": [
@@ -16,7 +16,7 @@
     "Login-ThreatMetrix-Truth-Data": {
       "tree": {
         "_id": "Login-ThreatMetrix-Truth-Data",
-        "_rev": "2021247706",
+        "_rev": "670084069",
         "identityResource": "managed/alpha_user",
         "entryNodeId": "775bb1b2-fba9-49e2-92a2-feb80f54e4ab",
         "innerTreeOnly": false,
@@ -24,29 +24,30 @@
         "noSession": false,
         "mustRun": false,
         "enabled": true,
+        "transactionalOnly": false,
         "uiConfig": {
           "categories": "[\"Authentication\"]"
         },
         "nodes": {
+          "4136d4ca-87c5-49f9-ad82-bd37a7ef67fa": {
+            "x": 769,
+            "y": 108.76666259765625,
+            "connections": {
+              "ERROR": "a9b3d5c7-16b9-4c86-b0d4-5a3e6deb8a90",
+              "NEXT": "70e691a5-1e33-4ac3-a356-e7b6d60d92e0"
+            },
+            "nodeType": "ThreatMetrixUpdateReviewNode",
+            "displayName": "Update Review PASS"
+          },
           "775bb1b2-fba9-49e2-92a2-feb80f54e4ab": {
-            "x": 154,
-            "y": 225.76666259765625,
+            "x": 157,
+            "y": 221.76666259765625,
             "connections": {
               "ERROR": "a9b3d5c7-16b9-4c86-b0d4-5a3e6deb8a90",
               "NEXT": "b3e684b9-1887-4776-b59c-9f09219ef8ab"
             },
             "nodeType": "ThreatMetrixUpdateReviewNode",
             "displayName": "Update Review INIT"
-          },
-          "d800438d-0245-4218-bcec-4d4b6c4d91a8": {
-            "x": 779,
-            "y": 244.76666259765625,
-            "connections": {
-              "ERROR": "a9b3d5c7-16b9-4c86-b0d4-5a3e6deb8a90",
-              "NEXT": "e301438c-0bd0-429c-ab0c-66126501069a"
-            },
-            "nodeType": "ThreatMetrixUpdateReviewNode",
-            "displayName": "Update Review FAIL"
           },
           "a9b3d5c7-16b9-4c86-b0d4-5a3e6deb8a90": {
             "x": 1042,
@@ -58,25 +59,25 @@
             "nodeType": "MessageNode",
             "displayName": "INTEGRATION ERROR"
           },
-          "4136d4ca-87c5-49f9-ad82-bd37a7ef67fa": {
-            "x": 780,
-            "y": 85.76666259765625,
-            "connections": {
-              "ERROR": "a9b3d5c7-16b9-4c86-b0d4-5a3e6deb8a90",
-              "NEXT": "70e691a5-1e33-4ac3-a356-e7b6d60d92e0"
-            },
-            "nodeType": "ThreatMetrixUpdateReviewNode",
-            "displayName": "Update Review PASS"
-          },
           "b3e684b9-1887-4776-b59c-9f09219ef8ab": {
-            "x": 463,
-            "y": 159.76666259765625,
+            "x": 457,
+            "y": 166.76666259765625,
             "connections": {
               "false": "d800438d-0245-4218-bcec-4d4b6c4d91a8",
               "true": "4136d4ca-87c5-49f9-ad82-bd37a7ef67fa"
             },
             "nodeType": "MessageNode",
             "displayName": "OTP – Step Up Authentication"
+          },
+          "d800438d-0245-4218-bcec-4d4b6c4d91a8": {
+            "x": 767,
+            "y": 252.76666259765625,
+            "connections": {
+              "ERROR": "a9b3d5c7-16b9-4c86-b0d4-5a3e6deb8a90",
+              "NEXT": "e301438c-0bd0-429c-ab0c-66126501069a"
+            },
+            "nodeType": "ThreatMetrixUpdateReviewNode",
+            "displayName": "Update Review FAIL"
           }
         },
         "staticNodes": {
@@ -85,27 +86,29 @@
             "y": 250
           },
           "70e691a5-1e33-4ac3-a356-e7b6d60d92e0": {
-            "x": 1225,
-            "y": 129
+            "x": 1322,
+            "y": 150
           },
           "e301438c-0bd0-429c-ab0c-66126501069a": {
-            "x": 1236,
-            "y": 274
+            "x": 1322,
+            "y": 287
           }
         }
       },
       "nodes": {
-        "775bb1b2-fba9-49e2-92a2-feb80f54e4ab": {
-          "_id": "775bb1b2-fba9-49e2-92a2-feb80f54e4ab",
-          "_rev": "-1584997987",
-          "orgId": "xxxxxxx",
+        "4136d4ca-87c5-49f9-ad82-bd37a7ef67fa": {
+          "_id": "4136d4ca-87c5-49f9-ad82-bd37a7ef67fa",
+          "_rev": "339262153",
+          "orgId": "abcd1234",
           "stepUpMethodName": "_A_SMS",
-          "eventTagName": "challenge_init",
+          "eventTagName": "challenge_pass",
+          "apiKey": null,
           "baseUrl": "https://h-api.online-metrix.net/",
           "_type": {
             "_id": "ThreatMetrixUpdateReviewNode",
             "name": "ThreatMetrix Update Review",
-            "collection": true
+            "collection": true,
+            "version": "1.0"
           },
           "_outcomes": [
             {
@@ -118,18 +121,19 @@
             }
           ]
         },
-        "d800438d-0245-4218-bcec-4d4b6c4d91a8": {
-          "_id": "d800438d-0245-4218-bcec-4d4b6c4d91a8",
-          "_rev": "333241438",
-          "orgId": "xxxxxxxx",
+        "775bb1b2-fba9-49e2-92a2-feb80f54e4ab": {
+          "_id": "775bb1b2-fba9-49e2-92a2-feb80f54e4ab",
+          "_rev": "1751070943",
+          "orgId": "abcd1234",
           "stepUpMethodName": "_A_SMS",
-          "eventTagName": "challenge_fail",
-          "notes": "",
+          "eventTagName": "challenge_init",
+          "apiKey": null,
           "baseUrl": "https://h-api.online-metrix.net/",
           "_type": {
             "_id": "ThreatMetrixUpdateReviewNode",
             "name": "ThreatMetrix Update Review",
-            "collection": true
+            "collection": true,
+            "version": "1.0"
           },
           "_outcomes": [
             {
@@ -144,7 +148,7 @@
         },
         "a9b3d5c7-16b9-4c86-b0d4-5a3e6deb8a90": {
           "_id": "a9b3d5c7-16b9-4c86-b0d4-5a3e6deb8a90",
-          "_rev": "1047088801",
+          "_rev": "1499230190",
           "messageYes": {
             "en": "OK"
           },
@@ -157,7 +161,8 @@
           "_type": {
             "_id": "MessageNode",
             "name": "Message Node",
-            "collection": true
+            "collection": true,
+            "version": "1.0"
           },
           "_outcomes": [
             {
@@ -170,33 +175,9 @@
             }
           ]
         },
-        "4136d4ca-87c5-49f9-ad82-bd37a7ef67fa": {
-          "_id": "4136d4ca-87c5-49f9-ad82-bd37a7ef67fa",
-          "_rev": "1403169352",
-          "orgId": "xxxxxxxx",
-          "stepUpMethodName": "_A_SMS",
-          "eventTagName": "challenge_pass",
-          "notes": "",
-          "baseUrl": "https://h-api.online-metrix.net/",
-          "_type": {
-            "_id": "ThreatMetrixUpdateReviewNode",
-            "name": "ThreatMetrix Update Review",
-            "collection": true
-          },
-          "_outcomes": [
-            {
-              "id": "NEXT",
-              "displayName": "Next"
-            },
-            {
-              "id": "ERROR",
-              "displayName": "Error"
-            }
-          ]
-        },
         "b3e684b9-1887-4776-b59c-9f09219ef8ab": {
           "_id": "b3e684b9-1887-4776-b59c-9f09219ef8ab",
-          "_rev": "1902844885",
+          "_rev": "-1939981022",
           "messageYes": {
             "en": "Step Up PASS"
           },
@@ -209,7 +190,8 @@
           "_type": {
             "_id": "MessageNode",
             "name": "Message Node",
-            "collection": true
+            "collection": true,
+            "version": "1.0"
           },
           "_outcomes": [
             {
@@ -219,6 +201,31 @@
             {
               "id": "false",
               "displayName": "False"
+            }
+          ]
+        },
+        "d800438d-0245-4218-bcec-4d4b6c4d91a8": {
+          "_id": "d800438d-0245-4218-bcec-4d4b6c4d91a8",
+          "_rev": "-730665761",
+          "orgId": "abcd1234",
+          "stepUpMethodName": "_A_SMS",
+          "eventTagName": "challenge_fail",
+          "apiKey": null,
+          "baseUrl": "https://h-api.online-metrix.net/",
+          "_type": {
+            "_id": "ThreatMetrixUpdateReviewNode",
+            "name": "ThreatMetrix Update Review",
+            "collection": true,
+            "version": "1.0"
+          },
+          "_outcomes": [
+            {
+              "id": "NEXT",
+              "displayName": "Next"
+            },
+            {
+              "id": "ERROR",
+              "displayName": "Error"
             }
           ]
         }
@@ -234,7 +241,7 @@
     "Login-ThreatMetrix": {
       "tree": {
         "_id": "Login-ThreatMetrix",
-        "_rev": "1096758447",
+        "_rev": "33765763",
         "identityResource": "managed/alpha_user",
         "entryNodeId": "6bea3f7d-6cce-45c6-bb53-d245bc2b2f75",
         "innerTreeOnly": false,
@@ -242,298 +249,106 @@
         "noSession": false,
         "mustRun": false,
         "enabled": true,
+        "transactionalOnly": false,
         "uiConfig": {
           "categories": "[\"Authentication\"]"
         },
         "nodes": {
-          "167d09f1-9a5c-4bb3-be42-fe8326ac7cfc": {
-            "x": 1051,
-            "y": 517.7666625976562,
-            "connections": {
-              "false": "c532787e-d3ed-489a-ad71-8a2e05777f5b",
-              "true": "041c2a4e-bc2c-4759-abe4-63e1cad827cc"
-            },
-            "nodeType": "MessageNode",
-            "displayName": "INTEGRATION ERROR"
-          },
           "23798d29-4e59-4781-82d6-7d0ed36d5b91": {
-            "x": 718,
-            "y": 136.76666259765625,
             "connections": {
-              "ERROR": "69f468ed-2725-4d5a-985f-34c56e003f2f",
-              "NEXT": "c84f5504-db61-4b84-b678-09d53eec1aa1"
+              "ERROR": "7804098b-9002-4be8-b490-919012ee3aea",
+              "NEXT": "52c6c352-002c-4ca1-814e-7cf9cea75478"
             },
+            "displayName": "ThreatMetrix Query",
             "nodeType": "ThreatMetrixSessionQueryNode",
-            "displayName": "ThreatMetrix Query"
+            "x": 695,
+            "y": 143.76666259765625
+          },
+          "30acafdb-f6fa-476b-bd0e-996168df898b": {
+            "connections": {
+              "false": "e301438c-0bd0-429c-ab0c-66126501069a",
+              "true": "e301438c-0bd0-429c-ab0c-66126501069a"
+            },
+            "displayName": "RISK CHALLENGE",
+            "nodeType": "PageNode",
+            "x": 1337,
+            "y": 355.76666259765625
+          },
+          "381a30d0-2b1b-4ee1-a15f-d9be9806574d": {
+            "connections": {
+              "false": "e301438c-0bd0-429c-ab0c-66126501069a",
+              "true": "e301438c-0bd0-429c-ab0c-66126501069a"
+            },
+            "displayName": "RISK REJECT",
+            "nodeType": "PageNode",
+            "x": 1336,
+            "y": 616.7666625976562
           },
           "4fbce4a6-4ea8-4d7e-b09d-9dd5161cf824": {
-            "x": 443,
-            "y": 183.76666259765625,
             "connections": {
-              "false": "c581b123-5362-40a1-ba52-54c2c084c4e3",
-              "true": "5780fb9f-161e-49fa-acf9-6f0cc503eb02"
+              "false": "e301438c-0bd0-429c-ab0c-66126501069a",
+              "true": "23798d29-4e59-4781-82d6-7d0ed36d5b91"
             },
+            "displayName": "Data Store Decision",
             "nodeType": "DataStoreDecisionNode",
-            "displayName": "Data Store Decision"
+            "x": 442,
+            "y": 307.76666259765625
           },
           "52c6c352-002c-4ca1-814e-7cf9cea75478": {
-            "x": 1019,
-            "y": 97.76666259765625,
             "connections": {
-              "CHALLENGE": "dae0aae9-1ac1-4015-9074-3eeb8c973304",
-              "ERROR": "a5a154f2-4e1c-4a14-b341-8618beb897a9",
-              "PASS": "c7e9a403-8db1-4b47-ad6a-e192c6f2952b",
-              "REJECT": "39748159-438f-42fa-bc46-049ec4785fc1",
-              "REVIEW": "08ac5a04-a513-416f-a958-7e108f1f2464"
+              "CHALLENGE": "30acafdb-f6fa-476b-bd0e-996168df898b",
+              "ERROR": "7804098b-9002-4be8-b490-919012ee3aea",
+              "PASS": "f0d5a375-0723-4d3f-863e-08e14ce6737a",
+              "REJECT": "381a30d0-2b1b-4ee1-a15f-d9be9806574d",
+              "REVIEW": "fa2ed61b-1133-485a-b33d-730e84f8c79a"
             },
+            "displayName": "ThreatMetrix Decision",
             "nodeType": "ThreatMetrixReviewStatusNode",
-            "displayName": "ThreatMetrix Decision"
+            "x": 969,
+            "y": 85.76666259765625
           },
           "6bea3f7d-6cce-45c6-bb53-d245bc2b2f75": {
-            "x": 159,
-            "y": 150.76666259765625,
             "connections": {
-              "ERROR": "872b70b4-3d61-4ac0-9593-eefca559337f",
-              "NEXT": "d551f138-f4c7-4a48-82e9-28fe1da68fdc"
+              "ERROR": "7804098b-9002-4be8-b490-919012ee3aea",
+              "NEXT": "4fbce4a6-4ea8-4d7e-b09d-9dd5161cf824"
             },
+            "displayName": "Login Screen",
             "nodeType": "PageNode",
-            "displayName": "Login Screen"
+            "x": 159,
+            "y": 150.76666259765625
           },
-          "b2c4bc87-5fcd-451f-a0bd-a784e26161bc": {
-            "x": 1343,
-            "y": 279.76666259765625,
+          "7804098b-9002-4be8-b490-919012ee3aea": {
             "connections": {
-              "false": "9e831e0a-c425-470b-a51f-0dac93927747",
-              "true": "9228ad61-9fce-4f0c-b83b-53f7c05f70cf"
+              "false": "e301438c-0bd0-429c-ab0c-66126501069a",
+              "true": "e301438c-0bd0-429c-ab0c-66126501069a"
             },
-            "nodeType": "MessageNode",
-            "displayName": "Risk CHALLENGE"
+            "displayName": "INTEG ERROR",
+            "nodeType": "PageNode",
+            "x": 1334,
+            "y": 833.7666625976562
           },
-          "dea3f2c1-af53-4f3e-a918-ab3fbcd194a6": {
-            "x": 1346,
-            "y": 13.76666259765625,
+          "f0d5a375-0723-4d3f-863e-08e14ce6737a": {
             "connections": {
-              "false": "ef1459df-ecc9-4845-b731-5491aa667f26",
-              "true": "6b056b17-27be-4924-ab12-3d4d4e21aa42"
+              "false": "70e691a5-1e33-4ac3-a356-e7b6d60d92e0",
+              "true": "70e691a5-1e33-4ac3-a356-e7b6d60d92e0"
             },
-            "nodeType": "MessageNode",
-            "displayName": "Risk PASS"
-          },
-          "ee81e132-05b0-4956-8cc3-53bffc3a6b15": {
-            "x": 1344,
-            "y": 411.76666259765625,
-            "connections": {
-              "false": "c59bd89d-bf8e-4dfb-9405-a8869e1a187d",
-              "true": "86ffb486-903c-44d9-ac1a-4d92089bc003"
-            },
-            "nodeType": "MessageNode",
-            "displayName": "Risk REJECT"
+            "displayName": "RISK PASS",
+            "nodeType": "PageNode",
+            "x": 1339,
+            "y": 6.76666259765625
           },
           "fa2ed61b-1133-485a-b33d-730e84f8c79a": {
-            "x": 1341,
-            "y": 145.26666259765625,
             "connections": {
-              "true": "9b2472e3-16e5-49d7-80b5-a1c91cbad252",
-              "false": "092c7875-bb7d-44d6-b0e6-95e11036fc0c"
+              "false": "e301438c-0bd0-429c-ab0c-66126501069a",
+              "true": "70e691a5-1e33-4ac3-a356-e7b6d60d92e0"
             },
+            "displayName": "Add TMX Truth Data",
             "nodeType": "InnerTreeEvaluatorNode",
-            "displayName": "Add TMX Truth Data"
-          },
-          "c532787e-d3ed-489a-ad71-8a2e05777f5b": {
-            "x": null,
-            "y": null,
-            "connections": {
-              "outcome": "e301438c-0bd0-429c-ab0c-66126501069a"
-            },
-            "nodeType": "DebugNode",
-            "displayName": "Debug Node"
-          },
-          "041c2a4e-bc2c-4759-abe4-63e1cad827cc": {
-            "x": null,
-            "y": null,
-            "connections": {
-              "outcome": "e301438c-0bd0-429c-ab0c-66126501069a"
-            },
-            "nodeType": "DebugNode",
-            "displayName": "Debug Node"
-          },
-          "69f468ed-2725-4d5a-985f-34c56e003f2f": {
-            "x": null,
-            "y": null,
-            "connections": {
-              "outcome": "167d09f1-9a5c-4bb3-be42-fe8326ac7cfc"
-            },
-            "nodeType": "DebugNode",
-            "displayName": "Debug Node"
-          },
-          "c84f5504-db61-4b84-b678-09d53eec1aa1": {
-            "x": null,
-            "y": null,
-            "connections": {
-              "outcome": "52c6c352-002c-4ca1-814e-7cf9cea75478"
-            },
-            "nodeType": "DebugNode",
-            "displayName": "Debug Node"
-          },
-          "c581b123-5362-40a1-ba52-54c2c084c4e3": {
-            "x": null,
-            "y": null,
-            "connections": {
-              "outcome": "e301438c-0bd0-429c-ab0c-66126501069a"
-            },
-            "nodeType": "DebugNode",
-            "displayName": "Debug Node"
-          },
-          "5780fb9f-161e-49fa-acf9-6f0cc503eb02": {
-            "x": null,
-            "y": null,
-            "connections": {
-              "outcome": "23798d29-4e59-4781-82d6-7d0ed36d5b91"
-            },
-            "nodeType": "DebugNode",
-            "displayName": "Debug Node"
-          },
-          "dae0aae9-1ac1-4015-9074-3eeb8c973304": {
-            "x": null,
-            "y": null,
-            "connections": {
-              "outcome": "b2c4bc87-5fcd-451f-a0bd-a784e26161bc"
-            },
-            "nodeType": "DebugNode",
-            "displayName": "Debug Node"
-          },
-          "a5a154f2-4e1c-4a14-b341-8618beb897a9": {
-            "x": null,
-            "y": null,
-            "connections": {
-              "outcome": "167d09f1-9a5c-4bb3-be42-fe8326ac7cfc"
-            },
-            "nodeType": "DebugNode",
-            "displayName": "Debug Node"
-          },
-          "c7e9a403-8db1-4b47-ad6a-e192c6f2952b": {
-            "x": null,
-            "y": null,
-            "connections": {
-              "outcome": "dea3f2c1-af53-4f3e-a918-ab3fbcd194a6"
-            },
-            "nodeType": "DebugNode",
-            "displayName": "Debug Node"
-          },
-          "39748159-438f-42fa-bc46-049ec4785fc1": {
-            "x": null,
-            "y": null,
-            "connections": {
-              "outcome": "ee81e132-05b0-4956-8cc3-53bffc3a6b15"
-            },
-            "nodeType": "DebugNode",
-            "displayName": "Debug Node"
-          },
-          "08ac5a04-a513-416f-a958-7e108f1f2464": {
-            "x": null,
-            "y": null,
-            "connections": {
-              "outcome": "fa2ed61b-1133-485a-b33d-730e84f8c79a"
-            },
-            "nodeType": "DebugNode",
-            "displayName": "Debug Node"
-          },
-          "872b70b4-3d61-4ac0-9593-eefca559337f": {
-            "x": null,
-            "y": null,
-            "connections": {
-              "outcome": "167d09f1-9a5c-4bb3-be42-fe8326ac7cfc"
-            },
-            "nodeType": "DebugNode",
-            "displayName": "Debug Node"
-          },
-          "d551f138-f4c7-4a48-82e9-28fe1da68fdc": {
-            "x": null,
-            "y": null,
-            "connections": {
-              "outcome": "4fbce4a6-4ea8-4d7e-b09d-9dd5161cf824"
-            },
-            "nodeType": "DebugNode",
-            "displayName": "Debug Node"
-          },
-          "9e831e0a-c425-470b-a51f-0dac93927747": {
-            "x": null,
-            "y": null,
-            "connections": {
-              "outcome": "e301438c-0bd0-429c-ab0c-66126501069a"
-            },
-            "nodeType": "DebugNode",
-            "displayName": "Debug Node"
-          },
-          "9228ad61-9fce-4f0c-b83b-53f7c05f70cf": {
-            "x": null,
-            "y": null,
-            "connections": {
-              "outcome": "e301438c-0bd0-429c-ab0c-66126501069a"
-            },
-            "nodeType": "DebugNode",
-            "displayName": "Debug Node"
-          },
-          "ef1459df-ecc9-4845-b731-5491aa667f26": {
-            "x": null,
-            "y": null,
-            "connections": {
-              "outcome": "70e691a5-1e33-4ac3-a356-e7b6d60d92e0"
-            },
-            "nodeType": "DebugNode",
-            "displayName": "Debug Node"
-          },
-          "6b056b17-27be-4924-ab12-3d4d4e21aa42": {
-            "x": null,
-            "y": null,
-            "connections": {
-              "outcome": "70e691a5-1e33-4ac3-a356-e7b6d60d92e0"
-            },
-            "nodeType": "DebugNode",
-            "displayName": "Debug Node"
-          },
-          "c59bd89d-bf8e-4dfb-9405-a8869e1a187d": {
-            "x": null,
-            "y": null,
-            "connections": {
-              "outcome": "e301438c-0bd0-429c-ab0c-66126501069a"
-            },
-            "nodeType": "DebugNode",
-            "displayName": "Debug Node"
-          },
-          "86ffb486-903c-44d9-ac1a-4d92089bc003": {
-            "x": null,
-            "y": null,
-            "connections": {
-              "outcome": "e301438c-0bd0-429c-ab0c-66126501069a"
-            },
-            "nodeType": "DebugNode",
-            "displayName": "Debug Node"
-          },
-          "9b2472e3-16e5-49d7-80b5-a1c91cbad252": {
-            "x": null,
-            "y": null,
-            "connections": {
-              "outcome": "70e691a5-1e33-4ac3-a356-e7b6d60d92e0"
-            },
-            "nodeType": "DebugNode",
-            "displayName": "Debug Node"
-          },
-          "092c7875-bb7d-44d6-b0e6-95e11036fc0c": {
-            "x": null,
-            "y": null,
-            "connections": {
-              "outcome": "e301438c-0bd0-429c-ab0c-66126501069a"
-            },
-            "nodeType": "DebugNode",
-            "displayName": "Debug Node"
+            "x": 1339,
+            "y": 220.26666259765625
           }
         },
         "staticNodes": {
-          "startNode": {
-            "x": 50,
-            "y": 250
-          },
           "70e691a5-1e33-4ac3-a356-e7b6d60d92e0": {
             "x": 1665,
             "y": 69
@@ -541,60 +356,37 @@
           "e301438c-0bd0-429c-ab0c-66126501069a": {
             "x": 1672,
             "y": 583
+          },
+          "startNode": {
+            "x": 50,
+            "y": 250
           }
         }
       },
       "nodes": {
-        "167d09f1-9a5c-4bb3-be42-fe8326ac7cfc": {
-          "_id": "167d09f1-9a5c-4bb3-be42-fe8326ac7cfc",
-          "_rev": "2067783454",
-          "messageYes": {
-            "en": "OK"
-          },
-          "message": {
-            "en": "An integration error has occurred in the journey"
-          },
-          "messageNo": {
-            "en": "OK"
-          },
-          "_type": {
-            "_id": "MessageNode",
-            "name": "Message Node",
-            "collection": true
-          },
-          "_outcomes": [
-            {
-              "id": "true",
-              "displayName": "True"
-            },
-            {
-              "id": "false",
-              "displayName": "False"
-            }
-          ]
-        },
         "23798d29-4e59-4781-82d6-7d0ed36d5b91": {
           "_id": "23798d29-4e59-4781-82d6-7d0ed36d5b91",
-          "_rev": "1713621410",
-          "orgId": "xxxxxxxx",
+          "_rev": "1800047176",
+          "orgId": "abcd1234",
           "serviceType": "SESSION_POLICY",
-          "baseUrl": "https://h-api.online-metrix.net/",
           "apiKey": null,
+          "baseUrl": "https://h-api.online-metrix.net/",
           "queryType": "SESSION_QUERY",
           "attributeParameters": {
-            "account_last_name": "sn",
+            "account_email": "mail",
             "account_first_name": "givenName",
-            "account_email": "mail"
+            "account_last_name": "sn"
           },
           "eventType": "LOGIN",
           "attributeSource": "USERDIRCTORY",
           "addAttributesToRequest": true,
-          "unknownSessionAction": "CHALLENGE",
+          "unknownSessionAction": "REVIEW",
           "policy": "default",
           "_type": {
             "_id": "ThreatMetrixSessionQueryNode",
             "name": "ThreatMetrix Query",
-            "collection": true
+            "collection": true,
+            "version": "1.0"
           },
           "_outcomes": [
             {
@@ -607,13 +399,78 @@
             }
           ]
         },
+        "30acafdb-f6fa-476b-bd0e-996168df898b": {
+          "_id": "30acafdb-f6fa-476b-bd0e-996168df898b",
+          "_rev": "-1544057630",
+          "nodes": [
+            {
+              "_id": "b2c4bc87-5fcd-451f-a0bd-a784e26161bc",
+              "nodeType": "MessageNode",
+              "displayName": "Risk CHALLENGE"
+            }
+          ],
+          "stage": "{\"pageFooter\":{\"en\":\"<style>\\nbutton[data-testid=\\\"btn-no\\\"] {\\n  display: none !important;\\n}\\n</style>\"}}",
+          "pageDescription": {},
+          "pageHeader": {
+            "en": "Risk Challenge"
+          },
+          "_type": {
+            "_id": "PageNode",
+            "name": "Page Node",
+            "collection": true,
+            "version": "1.0"
+          },
+          "_outcomes": [
+            {
+              "id": "true",
+              "displayName": "True"
+            },
+            {
+              "id": "false",
+              "displayName": "False"
+            }
+          ]
+        },
+        "381a30d0-2b1b-4ee1-a15f-d9be9806574d": {
+          "_id": "381a30d0-2b1b-4ee1-a15f-d9be9806574d",
+          "_rev": "2043293910",
+          "nodes": [
+            {
+              "_id": "ee81e132-05b0-4956-8cc3-53bffc3a6b15",
+              "nodeType": "MessageNode",
+              "displayName": "Risk REJECT"
+            }
+          ],
+          "stage": "{\"pageFooter\":{\"en\":\"<style>\\nbutton[data-testid=\\\"btn-no\\\"] {\\n  display: none !important;\\n}\\n</style>\"}}",
+          "pageDescription": {},
+          "pageHeader": {
+            "en": "Risk Assessment Reject"
+          },
+          "_type": {
+            "_id": "PageNode",
+            "name": "Page Node",
+            "collection": true,
+            "version": "1.0"
+          },
+          "_outcomes": [
+            {
+              "id": "true",
+              "displayName": "True"
+            },
+            {
+              "id": "false",
+              "displayName": "False"
+            }
+          ]
+        },
         "4fbce4a6-4ea8-4d7e-b09d-9dd5161cf824": {
           "_id": "4fbce4a6-4ea8-4d7e-b09d-9dd5161cf824",
-          "_rev": "935061110",
+          "_rev": "1456572419",
           "_type": {
             "_id": "DataStoreDecisionNode",
             "name": "Data Store Decision",
-            "collection": true
+            "collection": true,
+            "version": "1.0"
           },
           "_outcomes": [
             {
@@ -628,11 +485,12 @@
         },
         "52c6c352-002c-4ca1-814e-7cf9cea75478": {
           "_id": "52c6c352-002c-4ca1-814e-7cf9cea75478",
-          "_rev": "-999506937",
+          "_rev": "-547070572",
           "_type": {
             "_id": "ThreatMetrixReviewStatusNode",
             "name": "ThreatMetrix Review Status",
-            "collection": true
+            "collection": true,
+            "version": "1.0"
           },
           "_outcomes": [
             {
@@ -659,7 +517,7 @@
         },
         "6bea3f7d-6cce-45c6-bb53-d245bc2b2f75": {
           "_id": "6bea3f7d-6cce-45c6-bb53-d245bc2b2f75",
-          "_rev": "16075225",
+          "_rev": "-63199694",
           "nodes": [
             {
               "_id": "23bdf97e-3885-4b9e-8748-fd539cc3d920",
@@ -678,7 +536,7 @@
             }
           ],
           "pageDescription": {
-            "en": "New here? <a href=\"#/service/Registration\">Create an account</a><br><a href=\"#/service/ForgottenUsername\">Forgot username?</a><a href=\"#/service/ResetPassword\"> Forgot password?</a>"
+            "en": "New here? <a href=\"#/service/Registration-LNRS-IIDQA\">Create an account</a>"
           },
           "pageHeader": {
             "en": "Sign In to ThreatMetrix Login Demo"
@@ -686,7 +544,8 @@
           "_type": {
             "_id": "PageNode",
             "name": "Page Node",
-            "collection": true
+            "collection": true,
+            "version": "1.0"
           },
           "_outcomes": [
             {
@@ -699,20 +558,26 @@
             }
           ]
         },
-        "b2c4bc87-5fcd-451f-a0bd-a784e26161bc": {
-          "_id": "b2c4bc87-5fcd-451f-a0bd-a784e26161bc",
-          "_rev": "1343582207",
-          "messageYes": {
-            "en": "OK"
+        "7804098b-9002-4be8-b490-919012ee3aea": {
+          "_id": "7804098b-9002-4be8-b490-919012ee3aea",
+          "_rev": "2072214508",
+          "nodes": [
+            {
+              "_id": "167d09f1-9a5c-4bb3-be42-fe8326ac7cfc",
+              "nodeType": "MessageNode",
+              "displayName": "INTEG ERROR"
+            }
+          ],
+          "stage": "{\"pageFooter\":{\"en\":\"<style>\\nbutton[data-testid=\\\"btn-no\\\"] {\\n  display: none !important;\\n}\\n</style>\"}}",
+          "pageDescription": {},
+          "pageHeader": {
+            "en": "An integration error has occurred"
           },
-          "message": {
-            "en": "Risk Assessment CHALLENGE - Unknown Session"
-          },
-          "messageNo": {},
           "_type": {
-            "_id": "MessageNode",
-            "name": "Message Node",
-            "collection": true
+            "_id": "PageNode",
+            "name": "Page Node",
+            "collection": true,
+            "version": "1.0"
           },
           "_outcomes": [
             {
@@ -725,46 +590,26 @@
             }
           ]
         },
-        "dea3f2c1-af53-4f3e-a918-ab3fbcd194a6": {
-          "_id": "dea3f2c1-af53-4f3e-a918-ab3fbcd194a6",
-          "_rev": "-1384191091",
-          "messageYes": {
-            "en": "OK"
-          },
-          "message": {
-            "en": "Risk Assessment PASS"
-          },
-          "messageNo": {},
-          "_type": {
-            "_id": "MessageNode",
-            "name": "Message Node",
-            "collection": true
-          },
-          "_outcomes": [
+        "f0d5a375-0723-4d3f-863e-08e14ce6737a": {
+          "_id": "f0d5a375-0723-4d3f-863e-08e14ce6737a",
+          "_rev": "675524095",
+          "nodes": [
             {
-              "id": "true",
-              "displayName": "True"
-            },
-            {
-              "id": "false",
-              "displayName": "False"
+              "_id": "dea3f2c1-af53-4f3e-a918-ab3fbcd194a6",
+              "nodeType": "MessageNode",
+              "displayName": "Risk PASS"
             }
-          ]
-        },
-        "ee81e132-05b0-4956-8cc3-53bffc3a6b15": {
-          "_id": "ee81e132-05b0-4956-8cc3-53bffc3a6b15",
-          "_rev": "447538147",
-          "messageYes": {
-            "en": "Oh No !!"
+          ],
+          "stage": "{\"pageFooter\":{\"en\":\"<style>\\nbutton[data-testid=\\\"btn-no\\\"] {\\n  display: none !important;\\n}\\n</style>\"}}",
+          "pageDescription": {},
+          "pageHeader": {
+            "en": "Congratulations"
           },
-          "message": {
-            "en": "Risk Assessment REJECT"
-          },
-          "messageNo": {},
           "_type": {
-            "_id": "MessageNode",
-            "name": "Message Node",
-            "collection": true
+            "_id": "PageNode",
+            "name": "Page Node",
+            "collection": true,
+            "version": "1.0"
           },
           "_outcomes": [
             {
@@ -779,13 +624,43 @@
         },
         "fa2ed61b-1133-485a-b33d-730e84f8c79a": {
           "_id": "fa2ed61b-1133-485a-b33d-730e84f8c79a",
-          "_rev": "27359868",
+          "_rev": "481631241",
           "displayErrorOutcome": false,
           "tree": "Login-ThreatMetrix-Truth-Data",
           "_type": {
             "_id": "InnerTreeEvaluatorNode",
             "name": "Inner Tree Evaluator",
-            "collection": true
+            "collection": true,
+            "version": "1.0"
+          },
+          "_outcomes": [
+            {
+              "id": "true",
+              "displayName": "True"
+            },
+            {
+              "id": "false",
+              "displayName": "False"
+            }
+          ]
+        }
+      },
+      "innerNodes": {
+        "b2c4bc87-5fcd-451f-a0bd-a784e26161bc": {
+          "_id": "b2c4bc87-5fcd-451f-a0bd-a784e26161bc",
+          "_rev": "1795723596",
+          "messageYes": {
+            "en": "OK"
+          },
+          "message": {
+            "en": "Risk Assessment CHALLENGE - Unknown Session"
+          },
+          "messageNo": {},
+          "_type": {
+            "_id": "MessageNode",
+            "name": "Message Node",
+            "collection": true,
+            "version": "1.0"
           },
           "_outcomes": [
             {
@@ -798,351 +673,41 @@
             }
           ]
         },
-        "c532787e-d3ed-489a-ad71-8a2e05777f5b": {
-          "_id": "c532787e-d3ed-489a-ad71-8a2e05777f5b",
-          "_rev": "1940523627",
-          "popupEnabled": true,
+        "ee81e132-05b0-4956-8cc3-53bffc3a6b15": {
+          "_id": "ee81e132-05b0-4956-8cc3-53bffc3a6b15",
+          "_rev": "899679536",
+          "messageYes": {
+            "en": "Oh No !!"
+          },
+          "message": {
+            "en": "Risk Assessment REJECT"
+          },
+          "messageNo": {},
           "_type": {
-            "_id": "DebugNode",
-            "name": "Debug Node",
-            "collection": true
+            "_id": "MessageNode",
+            "name": "Message Node",
+            "collection": true,
+            "version": "1.0"
           },
           "_outcomes": [
             {
-              "id": "outcome",
-              "displayName": "Outcome"
+              "id": "true",
+              "displayName": "True"
+            },
+            {
+              "id": "false",
+              "displayName": "False"
             }
           ]
         },
-        "041c2a4e-bc2c-4759-abe4-63e1cad827cc": {
-          "_id": "041c2a4e-bc2c-4759-abe4-63e1cad827cc",
-          "_rev": "-810019672",
-          "popupEnabled": true,
-          "_type": {
-            "_id": "DebugNode",
-            "name": "Debug Node",
-            "collection": true
-          },
-          "_outcomes": [
-            {
-              "id": "outcome",
-              "displayName": "Outcome"
-            }
-          ]
-        },
-        "69f468ed-2725-4d5a-985f-34c56e003f2f": {
-          "_id": "69f468ed-2725-4d5a-985f-34c56e003f2f",
-          "_rev": "-1641654068",
-          "popupEnabled": true,
-          "_type": {
-            "_id": "DebugNode",
-            "name": "Debug Node",
-            "collection": true
-          },
-          "_outcomes": [
-            {
-              "id": "outcome",
-              "displayName": "Outcome"
-            }
-          ]
-        },
-        "c84f5504-db61-4b84-b678-09d53eec1aa1": {
-          "_id": "c84f5504-db61-4b84-b678-09d53eec1aa1",
-          "_rev": "-356800974",
-          "popupEnabled": true,
-          "_type": {
-            "_id": "DebugNode",
-            "name": "Debug Node",
-            "collection": true
-          },
-          "_outcomes": [
-            {
-              "id": "outcome",
-              "displayName": "Outcome"
-            }
-          ]
-        },
-        "c581b123-5362-40a1-ba52-54c2c084c4e3": {
-          "_id": "c581b123-5362-40a1-ba52-54c2c084c4e3",
-          "_rev": "334510020",
-          "popupEnabled": true,
-          "_type": {
-            "_id": "DebugNode",
-            "name": "Debug Node",
-            "collection": true
-          },
-          "_outcomes": [
-            {
-              "id": "outcome",
-              "displayName": "Outcome"
-            }
-          ]
-        },
-        "5780fb9f-161e-49fa-acf9-6f0cc503eb02": {
-          "_id": "5780fb9f-161e-49fa-acf9-6f0cc503eb02",
-          "_rev": "-928232035",
-          "popupEnabled": true,
-          "_type": {
-            "_id": "DebugNode",
-            "name": "Debug Node",
-            "collection": true
-          },
-          "_outcomes": [
-            {
-              "id": "outcome",
-              "displayName": "Outcome"
-            }
-          ]
-        },
-        "dae0aae9-1ac1-4015-9074-3eeb8c973304": {
-          "_id": "dae0aae9-1ac1-4015-9074-3eeb8c973304",
-          "_rev": "175168771",
-          "popupEnabled": true,
-          "_type": {
-            "_id": "DebugNode",
-            "name": "Debug Node",
-            "collection": true
-          },
-          "_outcomes": [
-            {
-              "id": "outcome",
-              "displayName": "Outcome"
-            }
-          ]
-        },
-        "a5a154f2-4e1c-4a14-b341-8618beb897a9": {
-          "_id": "a5a154f2-4e1c-4a14-b341-8618beb897a9",
-          "_rev": "2143383807",
-          "popupEnabled": true,
-          "_type": {
-            "_id": "DebugNode",
-            "name": "Debug Node",
-            "collection": true
-          },
-          "_outcomes": [
-            {
-              "id": "outcome",
-              "displayName": "Outcome"
-            }
-          ]
-        },
-        "c7e9a403-8db1-4b47-ad6a-e192c6f2952b": {
-          "_id": "c7e9a403-8db1-4b47-ad6a-e192c6f2952b",
-          "_rev": "-413945261",
-          "popupEnabled": true,
-          "_type": {
-            "_id": "DebugNode",
-            "name": "Debug Node",
-            "collection": true
-          },
-          "_outcomes": [
-            {
-              "id": "outcome",
-              "displayName": "Outcome"
-            }
-          ]
-        },
-        "39748159-438f-42fa-bc46-049ec4785fc1": {
-          "_id": "39748159-438f-42fa-bc46-049ec4785fc1",
-          "_rev": "40789431",
-          "popupEnabled": true,
-          "_type": {
-            "_id": "DebugNode",
-            "name": "Debug Node",
-            "collection": true
-          },
-          "_outcomes": [
-            {
-              "id": "outcome",
-              "displayName": "Outcome"
-            }
-          ]
-        },
-        "08ac5a04-a513-416f-a958-7e108f1f2464": {
-          "_id": "08ac5a04-a513-416f-a958-7e108f1f2464",
-          "_rev": "-1222814717",
-          "popupEnabled": true,
-          "_type": {
-            "_id": "DebugNode",
-            "name": "Debug Node",
-            "collection": true
-          },
-          "_outcomes": [
-            {
-              "id": "outcome",
-              "displayName": "Outcome"
-            }
-          ]
-        },
-        "872b70b4-3d61-4ac0-9593-eefca559337f": {
-          "_id": "872b70b4-3d61-4ac0-9593-eefca559337f",
-          "_rev": "-1443872973",
-          "popupEnabled": true,
-          "_type": {
-            "_id": "DebugNode",
-            "name": "Debug Node",
-            "collection": true
-          },
-          "_outcomes": [
-            {
-              "id": "outcome",
-              "displayName": "Outcome"
-            }
-          ]
-        },
-        "d551f138-f4c7-4a48-82e9-28fe1da68fdc": {
-          "_id": "d551f138-f4c7-4a48-82e9-28fe1da68fdc",
-          "_rev": "-209493271",
-          "popupEnabled": true,
-          "_type": {
-            "_id": "DebugNode",
-            "name": "Debug Node",
-            "collection": true
-          },
-          "_outcomes": [
-            {
-              "id": "outcome",
-              "displayName": "Outcome"
-            }
-          ]
-        },
-        "9e831e0a-c425-470b-a51f-0dac93927747": {
-          "_id": "9e831e0a-c425-470b-a51f-0dac93927747",
-          "_rev": "-1500859279",
-          "popupEnabled": true,
-          "_type": {
-            "_id": "DebugNode",
-            "name": "Debug Node",
-            "collection": true
-          },
-          "_outcomes": [
-            {
-              "id": "outcome",
-              "displayName": "Outcome"
-            }
-          ]
-        },
-        "9228ad61-9fce-4f0c-b83b-53f7c05f70cf": {
-          "_id": "9228ad61-9fce-4f0c-b83b-53f7c05f70cf",
-          "_rev": "62697492",
-          "popupEnabled": true,
-          "_type": {
-            "_id": "DebugNode",
-            "name": "Debug Node",
-            "collection": true
-          },
-          "_outcomes": [
-            {
-              "id": "outcome",
-              "displayName": "Outcome"
-            }
-          ]
-        },
-        "ef1459df-ecc9-4845-b731-5491aa667f26": {
-          "_id": "ef1459df-ecc9-4845-b731-5491aa667f26",
-          "_rev": "-1231470513",
-          "popupEnabled": true,
-          "_type": {
-            "_id": "DebugNode",
-            "name": "Debug Node",
-            "collection": true
-          },
-          "_outcomes": [
-            {
-              "id": "outcome",
-              "displayName": "Outcome"
-            }
-          ]
-        },
-        "6b056b17-27be-4924-ab12-3d4d4e21aa42": {
-          "_id": "6b056b17-27be-4924-ab12-3d4d4e21aa42",
-          "_rev": "-1750971652",
-          "popupEnabled": true,
-          "_type": {
-            "_id": "DebugNode",
-            "name": "Debug Node",
-            "collection": true
-          },
-          "_outcomes": [
-            {
-              "id": "outcome",
-              "displayName": "Outcome"
-            }
-          ]
-        },
-        "c59bd89d-bf8e-4dfb-9405-a8869e1a187d": {
-          "_id": "c59bd89d-bf8e-4dfb-9405-a8869e1a187d",
-          "_rev": "950570919",
-          "popupEnabled": true,
-          "_type": {
-            "_id": "DebugNode",
-            "name": "Debug Node",
-            "collection": true
-          },
-          "_outcomes": [
-            {
-              "id": "outcome",
-              "displayName": "Outcome"
-            }
-          ]
-        },
-        "86ffb486-903c-44d9-ac1a-4d92089bc003": {
-          "_id": "86ffb486-903c-44d9-ac1a-4d92089bc003",
-          "_rev": "-305519339",
-          "popupEnabled": true,
-          "_type": {
-            "_id": "DebugNode",
-            "name": "Debug Node",
-            "collection": true
-          },
-          "_outcomes": [
-            {
-              "id": "outcome",
-              "displayName": "Outcome"
-            }
-          ]
-        },
-        "9b2472e3-16e5-49d7-80b5-a1c91cbad252": {
-          "_id": "9b2472e3-16e5-49d7-80b5-a1c91cbad252",
-          "_rev": "-12952933",
-          "popupEnabled": true,
-          "_type": {
-            "_id": "DebugNode",
-            "name": "Debug Node",
-            "collection": true
-          },
-          "_outcomes": [
-            {
-              "id": "outcome",
-              "displayName": "Outcome"
-            }
-          ]
-        },
-        "092c7875-bb7d-44d6-b0e6-95e11036fc0c": {
-          "_id": "092c7875-bb7d-44d6-b0e6-95e11036fc0c",
-          "_rev": "-1310116726",
-          "popupEnabled": true,
-          "_type": {
-            "_id": "DebugNode",
-            "name": "Debug Node",
-            "collection": true
-          },
-          "_outcomes": [
-            {
-              "id": "outcome",
-              "displayName": "Outcome"
-            }
-          ]
-        }
-      },
-      "innerNodes": {
         "23bdf97e-3885-4b9e-8748-fd539cc3d920": {
           "_id": "23bdf97e-3885-4b9e-8748-fd539cc3d920",
-          "_rev": "224929365",
+          "_rev": "478136226",
           "_type": {
             "_id": "UsernameCollectorNode",
             "name": "Username Collector",
-            "collection": true
+            "collection": true,
+            "version": "1.0"
           },
           "_outcomes": [
             {
@@ -1153,11 +718,12 @@
         },
         "130d56f4-a4a4-4e26-89af-c7387a00799b": {
           "_id": "130d56f4-a4a4-4e26-89af-c7387a00799b",
-          "_rev": "-139427599",
+          "_rev": "315007614",
           "_type": {
             "_id": "PasswordCollectorNode",
             "name": "Password Collector",
-            "collection": true
+            "collection": true,
+            "version": "1.0"
           },
           "_outcomes": [
             {
@@ -1168,15 +734,15 @@
         },
         "7349db6b-3871-4041-99a1-1bb8f983c000": {
           "_id": "7349db6b-3871-4041-99a1-1bb8f983c000",
-          "_rev": "-351135164",
-          "orgId": "xxxxxxxx",
+          "_rev": "-1851198393",
+          "orgId": "abcd1234",
           "useClientGeneratedSessionId": false,
-          "pageId": "login-screen",
           "profilerUri": "https://h.online-metrix.net/fp/tags.js",
           "_type": {
             "_id": "ThreatMetrixProfilerNode",
             "name": "ThreatMetrix Profiler",
-            "collection": true
+            "collection": true,
+            "version": "1.0"
           },
           "_outcomes": [
             {
@@ -1186,6 +752,62 @@
             {
               "id": "ERROR",
               "displayName": "Error"
+            }
+          ]
+        },
+        "167d09f1-9a5c-4bb3-be42-fe8326ac7cfc": {
+          "_id": "167d09f1-9a5c-4bb3-be42-fe8326ac7cfc",
+          "_rev": "1849617155",
+          "messageYes": {
+            "en": "OK"
+          },
+          "message": {
+            "en": "Please contact your system administrator for assistance"
+          },
+          "messageNo": {
+            "en": "OK"
+          },
+          "_type": {
+            "_id": "MessageNode",
+            "name": "Message Node",
+            "collection": true,
+            "version": "1.0"
+          },
+          "_outcomes": [
+            {
+              "id": "true",
+              "displayName": "True"
+            },
+            {
+              "id": "false",
+              "displayName": "False"
+            }
+          ]
+        },
+        "dea3f2c1-af53-4f3e-a918-ab3fbcd194a6": {
+          "_id": "dea3f2c1-af53-4f3e-a918-ab3fbcd194a6",
+          "_rev": "-1611110902",
+          "messageYes": {
+            "en": "OK"
+          },
+          "message": {
+            "en": "Your device is Trusted and Passed Risk Assessment"
+          },
+          "messageNo": {},
+          "_type": {
+            "_id": "MessageNode",
+            "name": "Message Node",
+            "collection": true,
+            "version": "1.0"
+          },
+          "_outcomes": [
+            {
+              "id": "true",
+              "displayName": "True"
+            },
+            {
+              "id": "false",
+              "displayName": "False"
             }
           ]
         }
