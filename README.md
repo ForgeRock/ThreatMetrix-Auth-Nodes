@@ -46,7 +46,7 @@ Due to differences in compatibility between PingAM v7.x and PingAM v8.x, there a
 ## Quick Start Guide
 In order to get started with the LexisNexis DDP Nodes, we have prepared Quick Start Guides: 
 - Click [here](./docs/LNRS-DDP-Nodes-Getting-Started-Guide-Cloud.pdf) to download a copy of the quick start guide for PingOne AIC / ForgeRock. 
-- Click [here](./docs/LNRS-DDP-Nodes-Getting-Started-Guide-OpenAM.pdf) to download a copy of the quick start guide for PingAM / ForgeRock.
+- Click [here](./docs/LNRS-DDP-Nodes-Getting-Started-Guide-PingAM.pdf) to download a copy of the quick start guide for PingAM / ForgeRock.
 
 ## Release Notes
 To get the latest version of the LexisNexis DDP Nodes release notes, click [here](./docs/LNRS-DDP-Nodes-Release-Notes.pdf) 
