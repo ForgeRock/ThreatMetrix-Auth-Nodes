@@ -228,7 +228,7 @@ For more information on how to configure the example journey, refer to the Quick
 
 ## Example Journey/Tree
 
-The example depicted here showing how to integate LexisNexis DDP nodes, specifically a One-Time Passcode (OTP) integration with DDP event retrospective truth data via the LexisNexis DDP Update nodes. The truth data is an essential part of the risk engine that improves the fidelity of risk assessments over time. The journey depicted here is meant to be called from an inner tree evaluator node from another journey that has the DDP risk assessment, such as the previous exmaple depiction. The shared state is assumed to have the <code>ddp.request_id</code>code> from the risk assessment result which is used to link together the LexisNexis DDP Update node for retrospective truth data to the risk event API response from the LexisNexis DDP Query node.
+The example depicted here showing how to integate LexisNexis DDP nodes, specifically a One-Time Passcode (OTP) integration with DDP event retrospective truth data via the LexisNexis DDP Update nodes. The truth data is an essential part of the risk engine that improves the fidelity of risk assessments over time. The journey depicted here is meant to be called from an inner tree evaluator node from another journey that has the DDP risk assessment, such as the previous exmaple depiction. The shared state is assumed to have the <code>ddp.request_id</code> from the risk assessment result which is used to link together the LexisNexis DDP Update node for retrospective truth data to the risk event API response from the LexisNexis DDP Query node.
 
 For more information on how to configure the example journey, refer to the Quick Start guides.
 
