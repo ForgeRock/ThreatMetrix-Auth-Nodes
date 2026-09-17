@@ -72,6 +72,7 @@ The LexisNexis DDP Profiler node has the following configuration parameters:
 * **Page ID** - The Page ID is an identifier to be used if you place the profiling on multiple page nodes. This is an optional parameter and can be left blank.
 * **Profiler URI** - DDP Profiler URI. This can be the Basic Profiling URL or the Enhanced Profiling vis Hosted SSL URL. The default configuration is the Basic Profiling URL for the global region.
 * **Use Client Generated Session IDs** - If DDP JavaScript Tags have been separately integrated onto an customer hosted webpage or mobile device, this configuration allows for sending the unique Session ID to Ping / ForgeRock through <code>HiddenValueCallback</code> as part of an API Request.
+* **Tag Location** – When integrating using PingAM or PingAIC hosted HTML pages, typically through a Page Node, this configuration defines the tag placement.  The HEAD option is optimal for PingAM deployments, whereas the iFrame option is required for PingAIC deployments.
 
 ### Outputs
 The LexisNexis DDP Profiler node has the following outputs placed into shared state:
